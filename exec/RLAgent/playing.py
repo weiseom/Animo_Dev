@@ -28,12 +28,16 @@ def play(model):
         # Take action.
         _, state = game_state.frame_step(action)
 
+        print("=============")
+        print(state)
+        print(action)
+
         # Tell us something.
         if car_distance % 1000 == 0:
             print(("Current distance: %d frames." % car_distance))
 
 
 if __name__ == "__main__":
-    saved_model = 'saved-models/164-150-100-50000-225000.h5'
+    saved_model = 'saved-models/164-150-100-50000-50000.h5'
     model = neural_net(NUM_SENSORS, [164, 150], saved_model)
     play(model)

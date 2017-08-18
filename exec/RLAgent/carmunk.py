@@ -70,13 +70,13 @@ class GameState:
 
         # Create some obstacles, semi-randomly.
         # We'll create three and they'll move around to prevent over-fitting.
-        self.obstacles = []
-        self.obstacles.append(self.create_obstacle(200, 350, 100))
-        self.obstacles.append(self.create_obstacle(700, 200, 125))
-        self.obstacles.append(self.create_obstacle(600, 600, 35))
+#        self.obstacles = []
+#        self.obstacles.append(self.create_obstacle(200, 350, 100))
+#        self.obstacles.append(self.create_obstacle(700, 200, 125))
+#        self.obstacles.append(self.create_obstacle(600, 600, 35))
 
         # Create a cat.
-        self.create_cat()
+#        self.create_cat()
 
     def create_obstacle(self, x, y, r):
         c_body = pymunk.Body(pymunk.inf, pymunk.inf)
@@ -112,20 +112,24 @@ class GameState:
 
     def frame_step(self, action):
         if action == 0:  # Turn left.
-            self.car_body.angle -= .2
+            self.car_body.angle -= .30
             self.motor.driveLeft()
 
         elif action == 1:  # Turn right.
-            self.car_body.angle += .2
+            self.car_body.angle += .30
             self.motor.driveRight()
 
+        elif action == 2:
+            self.car_body.angle = self.car_body.angle
+            self.motor.driveForward()
+
         # Move obstacles.
-        if self.num_steps % 100 == 0:
-            self.move_obstacles()
+#        if self.num_steps % 100 == 0:
+#            self.move_obstacles()
 
         # Move cat.
-        if self.num_steps % 5 == 0:
-            self.move_cat()
+#        if self.num_steps % 5 == 0:
+#            self.move_cat()
 
         driving_direction = Vec2d(1, 0).rotated(self.car_body.angle)
         self.car_body.velocity = 100 * driving_direction
@@ -260,7 +264,7 @@ class GameState:
         arm_points = []
         # Make an arm. We build it flat because we'll rotate it about the
         # center later.
-        for i in range(1, 40):
+        for i in range(1, 250):
             arm_points.append((distance + x + (spread * i), y))
 
         return arm_points
