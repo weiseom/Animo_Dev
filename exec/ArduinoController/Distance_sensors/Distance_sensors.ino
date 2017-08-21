@@ -1,11 +1,11 @@
-int trigPin1 = 2;
-int echoPin1 = 3;
+int trigPin3 = 2;
+int echoPin3 = 3;
  
 int trigPin2 = 4;
 int echoPin2 = 5;
 
-int trigPin3 = 6;
-int echoPin3 = 7;
+int trigPin1 = 6;
+int echoPin1 = 7;
  
 void sendSig(int trigNum);
 void getDist(int echoNum);

@@ -11,7 +11,7 @@ class MotorController:
         def __init__(self):
                 print("motor init")
                 atexit.register(self.turnOffMotors)
-                self.speedValue = 50
+                self.speedValue = 30
                 self.myMotorL = MotorController.mh.getMotor(3)
                 self.myMotorR = MotorController.mh.getMotor(4)
                 self.myMotorL.setSpeed(50)
@@ -25,7 +25,7 @@ class MotorController:
 
         def driveForward(self):
                 print("Forward!")
-                self.speedSetup(50)
+                self.speedSetup(30)
                 self.myMotorL.run(Adafruit_MotorHAT.FORWARD)
                 self.myMotorR.run(Adafruit_MotorHAT.FORWARD)
 
@@ -33,9 +33,9 @@ class MotorController:
                 print("Right!")
                 self.myMotorL.run(Adafruit_MotorHAT.FORWARD)
                 self.myMotorR.run(Adafruit_MotorHAT.FORWARD)
-                for i in range(self.speedValue, 200):
+                for i in range(self.speedValue, 150):
                         self.myMotorL.setSpeed(i)
-                self.speedSetup(60)
+                self.speedSetup(30)
 
         def driveLeft(self):
                 print("Left!")
@@ -45,7 +45,7 @@ class MotorController:
                 for i in range(self.speedValue, 150):
                 	self.myMotorR.setSpeed(i)
                 #time.sleep(0.005)
-                self.speedSetup(60)
+                self.speedSetup(30)
 
         def driveBackward(self):
                 print("Backward! ")

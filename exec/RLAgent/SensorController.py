@@ -24,9 +24,9 @@ class MSSensor :
         def getDistance(self):
                 self.readings = []
                 ser.flushInput()
-                input_pin1 = ser.readline()
-                input_pin3 = ser.readline()
                 input_pin5 = ser.readline()
+                input_pin3 = ser.readline()
+                input_pin1 = ser.readline()
                 self.rawValue[0] = input_pin1.split()
                 self.rawValue[1] = input_pin3.split()
                 self.rawValue[2] = input_pin5.split()
@@ -54,14 +54,14 @@ class MSSensor :
 
                 # maximum distance
 
-                if int(self.rawValue[0][1]) > 119:
-                        self.rawValue[0][1] = 119
+                if int(self.rawValue[0][1]) > 59:
+                        self.rawValue[0][1] = 59
 
-                if int(self.rawValue[1][1]) > 119:
-                        self.rawValue[1][1] = 119
+                if int(self.rawValue[1][1]) > 59:
+                        self.rawValue[1][1] = 59
 
-                if int(self.rawValue[2][1]) > 119:
-                        self.rawValue[2][1] = 119
+                if int(self.rawValue[2][1]) > 59:
+                        self.rawValue[2][1] = 59
 
                 self.readings.append(int(self.rawValue[0][1]))
                 self.readings.append(int(self.rawValue[1][1]))

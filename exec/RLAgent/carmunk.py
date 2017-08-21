@@ -16,16 +16,10 @@ from MotorController import MotorController
 width = 700
 height = 700
 pygame.init()
-screen = pygame.display.set_mode((width, height))
-clock = pygame.time.Clock()
-
-# Turn off alpha since we don't use it.
-screen.set_alpha(None)
 
 # Showing sensors and redrawing slows things down.
-show_sensors = True
-draw_screen = True
-
+show_sensors = False
+draw_screen = False
 
 class GameState:
     def __init__(self):
@@ -111,6 +105,7 @@ class GameState:
         self.space.add(self.car_body, self.car_shape)
 
     def frame_step(self, action):
+
         if action == 0:  # Turn left.
             self.car_body.angle -= .30
             self.motor.driveLeft()
@@ -132,15 +127,15 @@ class GameState:
 #            self.move_cat()
 
         driving_direction = Vec2d(1, 0).rotated(self.car_body.angle)
-        self.car_body.velocity = 100 * driving_direction
+        self.car_body.velocity = 20 * driving_direction
 
         # Update the screen and stuff.
-        screen.fill(THECOLORS["black"])
-        draw(screen, self.space)
-        self.space.step(1./10)
-        if draw_screen:
-            pygame.display.flip()
-        clock.tick()
+#        screen.fill(THECOLORS["black"])
+#        draw(screen, self.space)
+#        self.space.step(1./10)
+#        if draw_screen:
+#            pygame.display.flip()
+#        clock.tick()
 
         # Get the current location and the readings there.
         x, y = self.car_body.position
@@ -187,14 +182,14 @@ class GameState:
             # Go backwards.
             self.car_body.velocity = -100 * driving_direction
             self.crashed = False
-            for i in range(10):
-                self.car_body.angle += .2  # Turn a little.
-                screen.fill(THECOLORS["red"])  # Red is scary!
-                draw(screen, self.space)
-                self.space.step(1./10)
-                if draw_screen:
-                    pygame.display.flip()
-                clock.tick()
+#            for i in range(10):
+#                self.car_body.angle += .2  # Turn a little.
+#                screen.fill(THECOLORS["red"])  # Red is scary!
+#                draw(screen, self.space)
+#                self.space.step(1./10)
+#                if draw_screen:
+#                    pygame.display.flip()
+#                clock.tick()
 
     def sum_readings(self, readings):
         """Sum the number of non-zero readings."""
@@ -226,7 +221,7 @@ class GameState:
         if show_sensors:
             pygame.display.update()
 
-        print(readings)
+        
         return readings
 
     def get_arm_distance(self, arm, x, y, angle, offset):
@@ -247,13 +242,13 @@ class GameState:
             if rotated_p[0] <= 0 or rotated_p[1] <= 0 \
                     or rotated_p[0] >= width or rotated_p[1] >= height:
                 return i  # Sensor is off the screen.
-            else:
-                obs = screen.get_at(rotated_p)
-                if self.get_track_or_not(obs) != 0:
-                    return i
+#           else:
+#                obs = screen.get_at(rotated_p)
+#                if self.get_track_or_not(obs) != 0:
+#                    return i
 
-            if show_sensors:
-                pygame.draw.circle(screen, (255, 255, 255), (rotated_p), 2)
+#            if show_sensors:
+#                pygame.draw.circle(screen, (255, 255, 255), (rotated_p), 2)
 
         # Return the distance for the arm.
         return i
@@ -264,7 +259,7 @@ class GameState:
         arm_points = []
         # Make an arm. We build it flat because we'll rotate it about the
         # center later.
-        for i in range(1, 250):
+        for i in range(1, 60):
             arm_points.append((distance + x + (spread * i), y))
 
         return arm_points
