@@ -11,11 +11,12 @@ class MotorController:
         def __init__(self):
                 print("motor init")
                 atexit.register(self.turnOffMotors)
-                self.speedValue = 30
+                self.defaultSpeedValue = 50
+                self.resetSpeedValue = 45
                 self.myMotorL = MotorController.mh.getMotor(3)
                 self.myMotorR = MotorController.mh.getMotor(4)
-                self.myMotorL.setSpeed(50)
-                self.myMotorR.setSpeed(self.speedValue)
+                self.myMotorL.setSpeed(self.defaultSpeedValue)
+                self.myMotorR.setSpeed(self.defaultSpeedValue)
 
         def turnOffMotors(self):
                 MotorController.mh.getMotor(1).run(Adafruit_MotorHAT.RELEASE)
@@ -25,7 +26,7 @@ class MotorController:
 
         def driveForward(self):
                 print("Forward!")
-                self.speedSetup(30)
+                self.speedSetup(self.resetSpeedValue)
                 self.myMotorL.run(Adafruit_MotorHAT.FORWARD)
                 self.myMotorR.run(Adafruit_MotorHAT.FORWARD)
 
@@ -33,19 +34,20 @@ class MotorController:
                 print("Right!")
                 self.myMotorL.run(Adafruit_MotorHAT.FORWARD)
                 self.myMotorR.run(Adafruit_MotorHAT.FORWARD)
-                for i in range(self.speedValue, 150):
+                for i in range(self.resetSpeedValue, 150):
                         self.myMotorL.setSpeed(i)
-                self.speedSetup(30)
+                self.speedSetup(self.resetSpeedValue)
+
 
         def driveLeft(self):
                 print("Left!")
                 #for i in range(self.speedValue, 200):
                 self.myMotorL.run(Adafruit_MotorHAT.FORWARD)
                 self.myMotorR.run(Adafruit_MotorHAT.FORWARD)
-                for i in range(self.speedValue, 150):
+                for i in range(self.resetSpeedValue, 150):
                 	self.myMotorR.setSpeed(i)
                 #time.sleep(0.005)
-                self.speedSetup(30)
+                self.speedSetup(self.defaultSpeedValue)
 
         def driveBackward(self):
                 print("Backward! ")
@@ -60,20 +62,20 @@ class MotorController:
                 time.sleep(1.0)
                 
         def speedSetup(self, val):
-                val2 = val + 5
+                val2 = val + 8
                 self.myMotorL.setSpeed(val2)
                 self.myMotorR.setSpeed(val)
                 
         def speedUpControl(self):
                 print("\tSpeed up...")
-                for i in range(self.speedValue, 100):
+                for i in range(self.resetSpeedValue, 100):
                         self.myMotorL.setSpeed(i)
                         self.myMotorR.setSpeed(i)
                         time.sleep(0.01)
 
         def speedDownControl(self):
                 print("\tSlow down...")
-                for i in reversed(list(range(self.speedValue, 100))):
+                for i in reversed(list(range(self.resetSpeedValue, 100))):
                         self.myMotorL.setSpeed(i)
                         self.myMotorR.setSpeed(i)
                         time.sleep(0.01)

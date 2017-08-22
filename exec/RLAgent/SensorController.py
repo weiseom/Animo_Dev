@@ -1,13 +1,28 @@
 import serial
 
-ser = serial.Serial("/dev/ttyACM0",9600)
-ser.flushInput()
-     
-class MSSensor :
+# open port ttyACM0 of ttyACM1
+try:
+        if serial.Serial("/dev/ttyACM0",9600).is_open:
+                print("[MSSensor] open! : port is ttyACM0")
+                ser = serial.Serial("/dev/ttyACM0",9600)
+                ser.flushInput()
+
+except:
+        try:
+                if serial.Serial("/dev/ttyACM1",9600).is_open:
+                        print("[MSSensor] open! : port is ttyACM1")
+                        ser = serial.Serial("/dev/ttyACM1",9600)
+                        ser.flushInput()
+
+        except:
+                print("[MSSensor] err : port closed")
+                exit(1)
+
+class MSSensor:
         PIN1=1
         PIN3=3
         PIN5=5
-        
+
         def __init__(self):
                 print("[MSSensor] init\n")
 
