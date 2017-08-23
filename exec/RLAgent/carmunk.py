@@ -11,6 +11,7 @@ from pymunk.pygame_util import draw
 
 from SensorController import MSSensor
 from MotorController import MotorController
+import time 
 
 # PyGame init
 width = 700
@@ -169,7 +170,8 @@ class GameState:
         self.cat_body.velocity = speed * direction
 
     def car_is_crashed(self, readings):
-        if readings[0] < 25 or readings[1] < 25 or readings[2] < 25:
+#        if readings[0] < 5 or readings[1] < 20 or readings[2] < 5:
+        if readings[1] < 20:
             return True
         else:
             return False
@@ -180,8 +182,11 @@ class GameState:
         """
         while self.crashed:
             # Go backwards.
-            self.car_body.velocity = -100 * driving_direction
+            self.motor.driveBackward()
+#            self.car_body.velocity = -100 * driving_direction
+            time.sleep(0.5)
             self.crashed = False
+
 #            for i in range(10):
 #                self.car_body.angle += .2  # Turn a little.
 #                screen.fill(THECOLORS["red"])  # Red is scary!
