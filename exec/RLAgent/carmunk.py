@@ -108,12 +108,14 @@ class GameState:
     def frame_step(self, action):
 
         if action == 0:  # Turn left.
-            self.car_body.angle -= .30
+            self.car_body.angle -= .45
             self.motor.driveLeft()
+            time.sleep(0.8)
 
         elif action == 1:  # Turn right.
-            self.car_body.angle += .30
+            self.car_body.angle += .45
             self.motor.driveRight()
+            time.sleep(0.8)
 
         elif action == 2:
             self.car_body.angle = self.car_body.angle
@@ -171,7 +173,7 @@ class GameState:
 
     def car_is_crashed(self, readings):
 #        if readings[0] < 5 or readings[1] < 20 or readings[2] < 5:
-        if readings[1] < 20:
+        if readings[1] < 5:
             return True
         else:
             return False
@@ -184,7 +186,7 @@ class GameState:
             # Go backwards.
             self.motor.driveBackward()
 #            self.car_body.velocity = -100 * driving_direction
-            time.sleep(0.5)
+            time.sleep(0.8)
             self.crashed = False
 
 #            for i in range(10):

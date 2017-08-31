@@ -34,7 +34,7 @@ class MotorController:
                 print("Right!")
                 self.myMotorL.run(Adafruit_MotorHAT.FORWARD)
                 self.myMotorR.run(Adafruit_MotorHAT.FORWARD)
-                for i in range(self.resetSpeedValue, 150):
+                for i in range(self.resetSpeedValue, 200):
                         self.myMotorL.setSpeed(i)
                 self.speedSetup(self.resetSpeedValue)
 
@@ -44,7 +44,7 @@ class MotorController:
                 #for i in range(self.speedValue, 200):
                 self.myMotorL.run(Adafruit_MotorHAT.FORWARD)
                 self.myMotorR.run(Adafruit_MotorHAT.FORWARD)
-                for i in range(self.resetSpeedValue, 150):
+                for i in range(self.resetSpeedValue, 200):
                 	self.myMotorR.setSpeed(i)
                 #time.sleep(0.005)
                 self.speedSetup(self.defaultSpeedValue)
@@ -62,7 +62,7 @@ class MotorController:
                 time.sleep(1.0)
                 
         def speedSetup(self, val):
-                val2 = val + 8
+                val2 = val + 10
                 self.myMotorL.setSpeed(val2)
                 self.myMotorR.setSpeed(val)
                 

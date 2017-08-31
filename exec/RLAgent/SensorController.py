@@ -51,17 +51,17 @@ class MSSensor:
                         print(self.rawValue[0])
                         self.rawValue[0] = [0,0]
                         self.rawValue[0][0] = 1
-                        self.rawValue[0][1] = 33
+                        self.rawValue[0][1] = 30
                 elif len(self.rawValue[1]) <= 1:
                         print("[MSSensor] err : cannot get values from sensor 3");
                         self.rawValue[1] = [0,0]
                         self.rawValue[1][0] = 3
-                        self.rawValue[1][1] = 33
+                        self.rawValue[1][1] = 30
                 elif len(self.rawValue[2]) <= 1:
                         print("[MSSensor] err : cannot get values from sensor 5");
                         self.rawValue[2] = [0,0]
                         self.rawValue[2][0] = 5
-                        self.rawValue[2][1] = 33
+                        self.rawValue[2][1] = 30
                # print("[MSSensor] Sensor PIN 1 "+self.rawValue[0][0]+" : "+self.rawValue[0][1]+"cm \n")
                # print("[MSSensor] Sensor PIN 3 "+self.rawValue[1][0]+" : "+self.rawValue[1][1]+"cm \n")
                # print("[MSSensor] Sensor PIN 5 "+self.rawValue[2][0]+" : "+self.rawValue[2][1]+"cm \n")
