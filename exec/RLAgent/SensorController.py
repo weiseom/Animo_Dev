@@ -62,9 +62,9 @@ class MSSensor:
                         self.rawValue[2] = [0,0]
                         self.rawValue[2][0] = 5
                         self.rawValue[2][1] = 30
-               # print("[MSSensor] Sensor PIN 1 "+self.rawValue[0][0]+" : "+self.rawValue[0][1]+"cm \n")
-               # print("[MSSensor] Sensor PIN 3 "+self.rawValue[1][0]+" : "+self.rawValue[1][1]+"cm \n")
-               # print("[MSSensor] Sensor PIN 5 "+self.rawValue[2][0]+" : "+self.rawValue[2][1]+"cm \n")
+#                print("[MSSensor] Sensor PIN 1 "+self.rawValue[0][0]+" : "+self.rawValue[0][1]+"cm \n")
+#                print("[MSSensor] Sensor PIN 3 "+self.rawValue[1][0]+" : "+self.rawValue[1][1]+"cm \n")
+#                print("[MSSensor] Sensor PIN 5 "+self.rawValue[2][0]+" : "+self.rawValue[2][1]+"cm \n")
                 ser.flushInput()
 
                 # maximum distance

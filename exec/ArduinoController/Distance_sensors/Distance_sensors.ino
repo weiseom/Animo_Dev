@@ -1,11 +1,11 @@
-int trigPin3 = 2;
-int echoPin3 = 3;
+int trigPin3 = 8;
+int echoPin3 = 9;
  
-int trigPin2 = 4;
-int echoPin2 = 5;
+int trigPin2 = 10;
+int echoPin2 = 11;
 
-int trigPin1 = 6;
-int echoPin1 = 7;
+int trigPin1 = 12;
+int echoPin1 = 13;
  
 void sendSig(int trigNum);
 void getDist(int echoNum);
@@ -47,7 +47,7 @@ void getDist(int echoNum){
   duration = pulseIn(echoNum, HIGH);
   distance = duration/2/29.1;
 
-  Serial.print(echoNum-2);
+  Serial.print(echoNum-6);
   Serial.print(" ");
   Serial.print(distance);
   Serial.print("\n");  

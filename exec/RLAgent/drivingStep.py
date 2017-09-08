@@ -28,8 +28,11 @@ class GameState:
             self.motor.driveRight()
             time.sleep(0.8)
 
-        elif action == 2:
+        elif action == 2: # Forward
             self.motor.driveForward()
+
+        elif action == 3: # Stop
+            self.motor.driveRelease()
 
 
         # Get the current location and the readings there.

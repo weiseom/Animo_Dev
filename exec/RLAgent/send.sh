@@ -13,3 +13,8 @@ do
 done
 
 
+
+#a=$(curl -sb -H "Accept: application/json" -H "Content-Type: application/json" http://52.78.63.210$
+
+#echo "a is : ${a}"
+
