@@ -4,6 +4,9 @@ from Adafruit_MotorHAT import Adafruit_MotorHAT, Adafruit_DCMotor
 import time
 import atexit
 
+# Speed / direction Controller
+# issue : left motor's speed is slower than R's
+
 class MotorController:
 
         mh = Adafruit_MotorHAT(addr=0x60)

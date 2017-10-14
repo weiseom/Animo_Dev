@@ -5,6 +5,9 @@ from SensorController import MSSensor
 from MotorController import MotorController
 import time 
 
+# driving controller with action (arg) 
+# sensor(distance) & motor(crash, L/R/F/B) control
+
 class GameState:
     def __init__(self):
 		#MotorController

@@ -6,6 +6,10 @@ import numpy as np
 from nn import neural_net
 import threading
 
+# Agent driving controller with RL model (arg)
+# action extraction
+# parallel processing 
+
 class AgentDriving(threading.Thread):
 
 	# 1 : play / 0 : stop 

@@ -4,6 +4,11 @@ import json
 import os
 import sys
 
+# Main Controller
+# Main methon : mainService(arg)    arg : object 
+# 1. Agent driving 
+# 2. Image Identify / send img to server
+
 class AgentService():
 
     agent = AgentDriving()

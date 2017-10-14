@@ -1,5 +1,10 @@
 import serial
 
+
+# Distance extraction
+# port / senser value control
+
+
 # open port ttyACM0 of ttyACM1
 try:
         if serial.Serial("/dev/ttyACM0",9600).is_open:
