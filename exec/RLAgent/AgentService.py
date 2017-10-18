@@ -3,6 +3,7 @@ import requests
 import json
 import os
 import sys
+import datetime
 
 # Main Controller
 # Main methon : mainService(arg)    arg : object 
@@ -23,7 +24,8 @@ class AgentService():
         url = "http://52.78.63.210:8008/darknet/find" 
         param = {'target':obj}
         res = requests.get(url,param)
-        print(res)
+        time = datetime.datetime.now()
+        print("[" + str(time) + "]" + " find " + obj)
 
     def imgIdentifier(self):
 
@@ -40,13 +42,19 @@ class AgentService():
 
             if value == 0:
                 self.agent.stop()
-                print("=======Find Object!========")
+                print("======================================================")
+                print("=======================Find Object!===================")
+                print("======================================================")
                 return 
             elif value == -1:
                 print("Network Service err")
 
 
     def mainService(self, obj):
+	
+	# init motion folder 
+        os.system('sudo rm -rf /var/lib/motion/01-*jpg | sudo rm -rf /var/lib/motion/*.avi')
+
 	# auto agent playing exec
         self.agent.start()
 

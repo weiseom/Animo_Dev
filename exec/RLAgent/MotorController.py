@@ -15,7 +15,7 @@ class MotorController:
                 print("motor init")
                 atexit.register(self.turnOffMotors)
                 self.defaultSpeedValue = 70
-                self.resetSpeedValue = 45
+                self.resetSpeedValue = 50
                 self.myMotorL = MotorController.mh.getMotor(3)
                 self.myMotorR = MotorController.mh.getMotor(4)
                 self.myMotorL.setSpeed(self.defaultSpeedValue)

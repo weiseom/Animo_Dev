@@ -15,10 +15,12 @@ class AgentDriving(threading.Thread):
 	# 1 : play / 0 : stop 
     playingFlag = 1
     NUM_SENSORS = 3
+    
 
     def play(self,model):
         car_distance = 0
         game_state = drivingStep.GameState()
+        action_flag = 0;
 
 	    # Do nothing to get initial.
         _, state = game_state.frame_step((2))
@@ -40,9 +42,11 @@ class AgentDriving(threading.Thread):
 	        # Take action.
             _, state = game_state.frame_step(action)
 
-            print("=============")
-            print(state)
-            print(action)
+            if action_flag != action: 
+                action_flag = action
+                print("=============")
+                print(state)
+                print(action)
 
     def stop(self):
         self.playingFlag = 0
